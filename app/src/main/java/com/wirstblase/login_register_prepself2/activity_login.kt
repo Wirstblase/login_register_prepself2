@@ -1,5 +1,7 @@
 package com.wirstblase.login_register_prepself2
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +18,7 @@ class activity_login : AppCompatActivity() {
     lateinit var loginPasswordField: TextView
     lateinit var loginLoginBtn: Button
     lateinit var loginWelcomeText: TextView
+    lateinit var switchToRegisterBtn: Button
 
     fun loginUser(emailAddr: String, passWrd: String): Int {
         val url = "https://api.prepself.razvan.store/api/v1/login"
@@ -93,6 +96,19 @@ class activity_login : AppCompatActivity() {
         loginPasswordField = findViewById(R.id.loginPasswordField)
         loginLoginBtn = findViewById(R.id.loginLoginBtn)
         loginWelcomeText = findViewById(R.id.loginWelcomeText)
+        switchToRegisterBtn = findViewById(R.id.switchToRegisterButton)
+
+        switchToRegisterBtn.background.alpha = 0
+        switchToRegisterBtn.stateListAnimator = null
+        switchToRegisterBtn.setTextColor(Color.parseColor("#FFFFFF"))
+
+        switchToRegisterBtn.setOnClickListener{
+
+            startActivity(
+                Intent(this@activity_login, MainActivity::class.java),
+                ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+
+        }
 
         loginLoginBtn.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
