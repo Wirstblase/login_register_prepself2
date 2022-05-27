@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.kotlinapplication.databinding.ActivityChecklistBinding
-import com.example.kotlinapplication.databinding.ActivityFridgeBinding
+import com.wirstblase.login_register_prepself2.databinding.ActivityChecklistBinding
+import com.wirstblase.login_register_prepself2.databinding.ActivityFridgeBinding
 
 class Fridge : AppCompatActivity() {
 

@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.kotlinapplication.databinding.ActivityUserProfileBinding
+import com.wirstblase.login_register_prepself2.databinding.ActivityUserProfileBinding
 
 class UserProfileActivity : AppCompatActivity() {
 

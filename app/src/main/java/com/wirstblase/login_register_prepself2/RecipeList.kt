@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.kotlinapplication.databinding.ActivityMainBinding
-import com.example.kotlinapplication.databinding.ActivityRecipeListBinding
+import com.wirstblase.login_register_prepself2.databinding.ActivityMainBinding
+import com.wirstblase.login_register_prepself2.databinding.ActivityRecipeListBinding
 
 class RecipeList : AppCompatActivity() {
 

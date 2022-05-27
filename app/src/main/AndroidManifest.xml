@@ -14,6 +14,21 @@
         android:theme="@style/Theme.Login_register_prepself2"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Fridge"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeList"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChecklistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainScreenActivity"
+            android:exported="true"/>
+        <activity
             android:name=".loadActivity"
             android:exported="true">
             <intent-filter>

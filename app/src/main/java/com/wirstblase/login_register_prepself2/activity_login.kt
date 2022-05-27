@@ -105,7 +105,7 @@ class activity_login : AppCompatActivity() {
         switchToRegisterBtn.setOnClickListener{
 
             startActivity(
-                Intent(this@activity_login, MainActivity::class.java),
+                Intent(this@activity_login, MainScreenActivity::class.java),
                 ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
 
         }
