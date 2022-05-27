@@ -2,10 +2,11 @@ package com.wirstblase.login_register_prepself2
 
 import android.app.Activity
 import android.app.ActivityOptions
-import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.security.KeyPairGeneratorSpec
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -18,23 +19,61 @@ import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
+import java.security.KeyStore
+import java.security.interfaces.RSAPrivateKey
+import javax.crypto.Cipher
+import javax.crypto.SecretKey
+import javax.crypto.spec.IvParameterSpec
 
 
 var userToken: String = " "
 
-/*
+class keystoreHandler {
 
-var internalActivity1 = Activity
-
-fun saveUserToken(token: String){
-    val sharedPref = internalActivity1?.getPreferences(Context.MODE_PRIVATE) ?: return
-    with (sharedPref.edit()) {
-        putInt("MY_COINS", coins)
-        apply()
+    companion object {
+        val TRANSFORMATION = "AES/GCM/NoPadding"
+        val ANDROID_KEY_STORE = "AndroidKeyStore"
+        val SAMPLE_ALIAS = "MYALIAS"
     }
-}*/
 
-fun loadUserToken(){
+    fun getKey(): SecretKey {
+        val keystore = KeyStore.getInstance("AndroidKeyStore")
+        keystore.load(null)
+
+        val secretKeyEntry = keystore.getEntry("MyKeyAlias", null) as KeyStore.SecretKeyEntry
+        return secretKeyEntry.secretKey
+    }
+
+    fun encryptData(data: String): Pair<ByteArray, ByteArray> {
+        val cipher = Cipher.getInstance("AES/CBC/NoPadding")
+
+        var temp = data
+        while (temp.toByteArray().size % 16 != 0)
+            temp += "\u0020"
+
+        cipher.init(Cipher.ENCRYPT_MODE, getKey())
+
+        val ivBytes = cipher.iv
+        val encryptedBytes = cipher.doFinal(temp.toByteArray(Charsets.UTF_8))
+
+        return Pair(ivBytes, encryptedBytes)
+    }
+
+    fun decryptData(ivBytes: ByteArray, data: ByteArray): String{
+        val cipher = Cipher.getInstance("AES/CBC/NoPadding")
+        val spec = IvParameterSpec(ivBytes)
+
+        cipher.init(Cipher.DECRYPT_MODE, getKey(), spec)
+        return cipher.doFinal(data).toString(Charsets.UTF_8).trim()
+    }
+
+    public fun saveToken(token:String){
+
+    }
+
+    public fun loadToken(): String{
+        return ""
+    }
 
 }
 
