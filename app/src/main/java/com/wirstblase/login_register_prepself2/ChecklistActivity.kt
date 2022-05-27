@@ -47,7 +47,7 @@ class ChecklistActivity : AppCompatActivity() {
         startActivity(intent)
     }
     fun openDiscoveryActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainScreenActivity::class.java)
         startActivity(intent)
     }
 }

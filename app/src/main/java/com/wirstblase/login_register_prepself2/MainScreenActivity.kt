@@ -1,5 +1,6 @@
 package com.wirstblase.login_register_prepself2
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -135,7 +136,7 @@ class MainScreenActivity : AppCompatActivity() {
 
     fun openChecklistActivity() {
         val intent = Intent(this, ChecklistActivity::class.java)
-        startActivity(intent)
+        startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
         finish();
     }
     fun openUserProfileActivity() {
@@ -147,6 +148,7 @@ class MainScreenActivity : AppCompatActivity() {
     fun openFridgeActivity() {
         val intent = Intent(this, Fridge::class.java)
         startActivity(intent)
+
         finish();
     }
     fun openRecipeListActivity() {

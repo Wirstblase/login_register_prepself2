@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
         switchToLoginBtn.setOnClickListener{
 
             startActivity(
-                Intent(this@MainActivity, test::class.java),
+                Intent(this@MainActivity, MainScreenActivity::class.java),
                 ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
 
         }
